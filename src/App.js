@@ -1,6 +1,7 @@
 import React from "react";
 import './App.css';
 import Papa from "papaparse"
+import logo from './logo.svg';
 
 const App = () => {
 
@@ -33,7 +34,7 @@ const App = () => {
     setValuesArray([]);
   }
   return (
-    <>
+    <div className="App-header">
       <input
         type="file"
         name="file"
@@ -62,7 +63,7 @@ const App = () => {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

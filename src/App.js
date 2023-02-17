@@ -1,10 +1,28 @@
 import React from "react";
-import './App.css';
 import Papa from "papaparse"
-import logo from './logo.svg';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  labelBotao: {
+    width: '11%',
+    display: "block",
+    margin: "10px auto",
+    border: "1px solid black",
+    borderRadius: "7px",
+    padding: "5px",
+    color: "black",
+    background: "lightgray",
+    textAlign: 'center',
+    "&:hover": {
+      top: '-0.6px',
+      textShadow: '1px 1px 1px rgba(0, 0, 0, .2)',
+      boxShadow: '1px 1px 1px rgba(0, 0, 0, .5)',
+    },
+  },
+});
 
 const App = () => {
-
+  const classes = useStyles();
   const [data, setData] = React.useState([]);
   const [columnArray, setColumnArray] = React.useState([]);
   const [valuesArray, setValuesArray] = React.useState([]);
@@ -34,16 +52,27 @@ const App = () => {
     setValuesArray([]);
   }
   return (
-    <div className="App-header">
+    <div>
+      <label
+        className={classes.labelBotao}
+        for="getFile"
+        class="btn"
+      // onclick={document.getElementById('getFile').click()}
+      >Escolher o Arquivo</label>
+
+      <label
+        onClick={limparArquivo}
+        className={classes.labelBotao}
+      >Limpar Arquivo</label>
+
       <input
+        id="getFile"
         type="file"
         name="file"
         accept=".csv"
         onChange={handleFile}
-        style={{ display: "block", margin: "10px auto" }}
+        style={{ display: "block", margin: "10px auto", display: "none" }}
       ></input>
-      <button onClick={limparArquivo} style={{ display: "block", margin: "10px auto" }}>Limpar Arquivo</button>
-      
 
       <table style={{ borderCollapse: "collapse", border: "1px solid black", margin: "5px auto" }}>
         <thead>
